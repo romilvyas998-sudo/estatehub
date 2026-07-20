@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f7f7f3; color: #101828; font-family: Arial, Helvetica, sans-serif; }
+body.dark { color-scheme: dark; background: #0d171b; color: #e9f0ed; }
+body.dark .surface { background: #142126; border-color: rgba(214, 231, 225, .14); }
+body.dark .muted { color: #9fb0ae; }
+body.dark .soft-bg { background: #102027; }
+body.dark .line { border-color: rgba(220, 237, 231, .12); }
+body.dark .input-surface { background: #1a2b30; border-color: #30464a; color: #f0f8f5; }
+::selection { background: #d7b665; color: #102027; }
+
+@layer components {
+  .page-shell { @apply mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-12; }
+  .eyebrow { @apply text-[11px] font-bold uppercase tracking-[0.22em] text-gold; }
+  .section-title { @apply mt-3 font-serif text-3xl leading-tight text-ink md:text-5xl dark:text-white; }
+  .surface { @apply rounded-3xl border border-slate-200/80 bg-white; }
+  .muted { @apply text-slate-500; }
+  .input-surface { @apply rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20; }
+  .gold-button { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:bg-[#e3bd66] active:translate-y-0; }
+  .outline-button { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-gold hover:bg-gold/5 dark:border-white/15 dark:bg-transparent dark:text-white; }
+  .image-shine { @apply after:pointer-events-none after:absolute after:inset-0 after:bg-gradient-to-t after:from-ink/45 after:via-transparent after:to-transparent; }
+}
+
+.font-serif { font-family: Georgia, 'Times New Roman', serif; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: #e8ebe8; }
+.skeleton::after { position: absolute; inset: 0; content: ''; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); animation: shimmer 1.4s infinite; }
